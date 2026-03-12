@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { type Product } from "./types/product";
+import { type Product } from "./shared/types/product";
 import { ProductCard } from "./components/ProductCard/ProductCard";
 import styles from "./components/ProductCard/ProductCard.module.css";
 
