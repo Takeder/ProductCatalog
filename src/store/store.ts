@@ -1,17 +1,17 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import productReducer from "./reducers/productSlice";
 import { useDispatch, useSelector } from "react-redux";
+import productReducer from "./reducers/productSlice";
 
-const rootReducers = combineReducers({ productReducer });
-export const setupStore = () => {
-    return configureStore({
-        reducer: rootReducers,
-    });
-};
+const rootReducer = combineReducers({
+    product: productReducer,
+});
 
-export type RootState = ReturnType<typeof rootReducers>;
-export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore["dispatch"];
+export const store = configureStore({
+    reducer: rootReducer,
+});
 
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
+// Создаем типизированные версии хуков для использования в компонентах
+
+export type RootState = ReturnType<typeof store.getState>;
+export const useAppDispatch = useDispatch.withTypes<typeof store.dispatch>();
 export const useAppSelector = useSelector.withTypes<RootState>();

@@ -1,37 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { type Product } from "./shared/types/product";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "./store/store";
+import { fetchProducts } from "./store/reducers/actionCreators";
 import { ProductCard } from "./components/ProductCard/ProductCard";
-import styles from "./components/ProductCard/ProductCard.module.css";
+import styles from "./App.module.css";
 
-const API_URL = "https://api.escuelajs.co/api/v1/products";
-
-const App: React.FC = () => {
-    const [products, setProducts] = useState<Product[]>([]);
-    const [error, setError] = useState<string | null>(null);
+const App = () => {
+    const dispatch = useAppDispatch(); // Инструмент для отправки команд в Redux
+    // Достаем данные из Redux
+    const { items, isLoading, error } = useAppSelector(
+        (state) => state.product,
+    );
 
     useEffect(() => {
-        const loadData = async () => {
-            try {
-                const res = await fetch(API_URL);
-                if (!res.ok) throw new Error("Ошибка сети");
-                const data: Product[] = await res.json();
-                setProducts(data);
-            } catch (err) {
-                setError(
-                    err instanceof Error ? err.message : "Ошибка загрузки",
-                );
-            }
-        };
-        loadData();
-    }, []);
+        dispatch(fetchProducts()); // При первом запуске страницы просим данные у сервера
+    }, [dispatch]);
 
-    if (error) return <div>Ошибка: {error}</div>;
+    if (isLoading) return <div className={styles.loader}>Загрузка...</div>;
+    if (error) return <div className={styles.error}>Ошибка: {error}</div>;
 
     return (
-        <main className={styles.grid}>
-            {products.map((item) => (
-                <ProductCard key={item.id} product={item} />
-            ))}
+        <main className={styles.container}>
+            <div className={styles.grid}>
+                {items.map((item) => (
+                    <ProductCard key={item.id} product={item} />
+                ))}
+            </div>
         </main>
     );
 };

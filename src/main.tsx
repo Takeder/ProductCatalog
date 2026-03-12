@@ -1,15 +1,12 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { Provider } from "react-redux";
-
-import { store } from "./store/store.ts";
-import "./index.css";
-import App from "./App.tsx";
+import { Provider } from "react-redux"; // Обертка, которая дает доступ к Redux
+import { store } from "./store/store"; // Наш созданный объект стора
+import App from "./App";
+import "./index.css"; // Глобальные стили
 
 createRoot(document.getElementById("root")!).render(
-    <StrictMode>
-        <Provider store={store}>
-            <App />
-        </Provider>
-    </StrictMode>,
+    <Provider store={store}>
+        {/* Передаем стор всему приложению */}
+        <App />
+    </Provider>,
 );

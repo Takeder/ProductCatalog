@@ -1,0 +1,23 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    /* Авто-колонки: минимум 250px, максимум — занять всё свободное место (1fr) */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.loader,
+.error {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 50px;
+}
+
+.error {
+    color: #ff4d4f;
+}
