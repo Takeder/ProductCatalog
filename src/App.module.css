@@ -4,20 +4,35 @@
     padding: 20px;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 20px 0;
+}
+
+.cartLink {
+    background: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.cartLink:hover {
+    opacity: 0.8;
+}
+
 .grid {
     display: grid;
-    /* Авто-колонки: минимум 250px, максимум — занять всё свободное место (1fr) */
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 24px;
 }
 
-.loader,
-.error {
+.status {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-top: 50px;
-}
-
-.error {
-    color: #ff4d4f;
 }

@@ -1,0 +1,86 @@
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.infoName {
+    display: block;
+    font-weight: 600;
+}
+
+.infoMeta {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.removeBtn {
+    background: #fff;
+    color: #ff4d4f;
+    border: 1px solid #ff4d4f;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.removeBtn:hover {
+    background: #ff4d4f;
+    color: #fff;
+}
+
+.total {
+    text-align: right;
+    margin-top: 25px;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #1677ff;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f1f1f1;
+    padding: 4px 8px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.countBtn {
+    background: #fff;
+    border: 1px solid #ddd;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.countBtn:hover {
+    background: #eee;
+}
+
+.quantity {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}

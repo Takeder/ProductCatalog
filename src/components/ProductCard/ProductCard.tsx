@@ -1,23 +1,37 @@
 import { type Product } from "../../shared/types/product";
+import { useAppDispatch, useAppSelector } from "../../store/store"; // Добавили useAppSelector
+import { addToCart } from "../../store/reducers/cartSlice";
 import styles from "./ProductCard.module.css";
 
-interface ProductCardProps {
-    product: Product;
-}
+//Карточка товара
 
-export const ProductCard = ({ product }: ProductCardProps) => {
-    // Берем первую картинку или ставим заглушку
-    const imageUrl = product.images?.[0];
+// Принимаем данные одного товара
+export const ProductCard = ({ product }: { product: Product }) => {
+    const dispatch = useAppDispatch(); // Функция для отправки команд (экшенов)
+
+    // Проверяем, есть ли этот товар уже в корзине
+    const isInCart = useAppSelector((state) =>
+        state.cart.items.some((item) => item.id === product.id),
+    );
 
     return (
-        <article className={styles.card}>
-            <img src={imageUrl} alt={product.title} className={styles.image} />
-            <span className={styles.category}>{product.category.name}</span>
+        <div className={styles.card}>
+            <img
+                src={product.images[0]}
+                alt={product.title}
+                className={styles.image}
+            />
             <h3 className={styles.title}>{product.title}</h3>
             <div className={styles.footer}>
                 <span className={styles.price}>${product.price}</span>
-                <button className={styles.button}>Купить</button>
+                <button
+                    className={styles.button}
+                    onClick={() => dispatch(addToCart(product))} // При клике отправляем товар в корзину
+                    disabled={isInCart} // Блокируем кнопку
+                >
+                    {isInCart ? "В корзине" : "Купить"}
+                </button>
             </div>
-        </article>
+        </div>
     );
 };

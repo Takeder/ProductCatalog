@@ -1,41 +1,35 @@
 .card {
-    border: 1px solid #eee;
+    background: #fff;
     border-radius: 12px;
     padding: 16px;
     display: flex;
     flex-direction: column;
-    background: #fff;
-    transition: transform 0.2s ease;
+    border: 1px solid #eee;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .image {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1;
     object-fit: cover;
     border-radius: 8px;
-    background: #f9f9f9;
-}
-
-.category {
-    font-size: 0.8rem;
-    color: #888;
-    text-transform: uppercase;
-    margin-top: 12px;
 }
 
 .title {
-    font-size: 1.1rem;
-    margin: 8px 0;
-    /* Обрезка текста до 2-х строк */
+    font-size: 1.05rem;
+    margin: 12px 0 8px;
+    height: 2.6em;
+    overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .footer {
@@ -43,23 +37,36 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 16px;
+    padding-top: 12px;
 }
 
 .price {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.2rem;
 }
 
 .button {
-    background: #000;
-    color: #fff;
+    background: #1677ff;
+    color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 6px;
     cursor: pointer;
+    font-weight: 500;
 }
 
 .button:hover {
-    background: #333;
+    background: #4096ff;
+}
+
+.button:disabled {
+    background: #ccc; /* Серый цвет */
+    color: #666;
+    cursor: not-allowed;
+    transform: none; /* Убираем эффекты при наведении */
+}
+
+.button:disabled:hover {
+    background: #ccc;
+    box-shadow: none;
 }
