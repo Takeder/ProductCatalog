@@ -1,19 +1,21 @@
 :root {
-    font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
-    background-color: #f8f9fa;
-    color: #212529;
+    --primary-color: #2563eb;
+    --bg-color: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
 body {
     margin: 0;
-    min-width: 320px;
+    padding: 0;
+    font-family: "Inter", system-ui, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
 }
 
 * {
     box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
 }

@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"; // Импортируем функцию для создания асинхронных действий
 import axios from "axios"; // Импортируем axios для выполнения HTTP-запросов
-import { type Product } from "../../shared/types/product"; // Импортируем интерфейс товара для типизации
+import { type Product } from "../../shared/types/product"; // Тип данных товара
 
 /**
  * Асинхронный экшен для загрузки списка товаров с сервера.
- * Первый аргумент "products/fetchAll" — уникальный тип действия для Redux DevTools.
+ * Первый аргумент "products/fetchAll" — уникальный тип действия для Redux DevTools. Имя экшена для отладки
  * Второй аргумент — асинхронная функция (колбэк), выполняющая сам запрос.
  */
 export const fetchProducts = createAsyncThunk(
@@ -12,7 +12,6 @@ export const fetchProducts = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             // Выполняем GET-запрос. Указываем <Product[]>, чтобы TypeScript знал структуру ответа.
-            // Добавляем параметры пагинации (offset и limit), чтобы не грузить сразу 200 товаров.
             const response = await axios.get<Product[]>(
                 "https://api.escuelajs.co/api/v1/products",
             );

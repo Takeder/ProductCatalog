@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import App from "../App";
-import { CartPage } from "../pages/CartPage";
+import { CartPage } from "../pages/CartPage/CartPage";
+import { FavoritesPage } from "../pages/FavoritesPage/FavoritesPage";
 import styles from "../App.module.css"; // Используем общий контейнер для ошибок
 
 export const AppRouter = () => {
@@ -11,6 +12,8 @@ export const AppRouter = () => {
 
             {/* Страница корзины со счетчиками */}
             <Route path="/cart" element={<CartPage />} />
+            {/* Страница избранных товаров */}
+            <Route path="/favorites" element={<FavoritesPage />} />
 
             {/* Заглушка для несуществующих страниц */}
             <Route
