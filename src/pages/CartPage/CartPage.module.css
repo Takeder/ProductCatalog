@@ -1,0 +1,48 @@
+.container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.countBtn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: var(--white);
+    cursor: pointer;
+}
+
+.total {
+    text-align: right;
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin: 2rem 0;
+}
+
+.removeBtn {
+    color: #ef4444;
+    background: #fef2f2;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}

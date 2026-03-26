@@ -1,6 +1,7 @@
 import { type Product } from "../../shared/types/product";
 import { useAppDispatch, useAppSelector } from "../../store/store"; // Добавили useAppSelector
 import { addToCart } from "../../store/reducers/cartSlice";
+import { toggleFavorite } from "../../store/reducers/favoritesSlice";
 import styles from "./ProductCard.module.css";
 
 //Карточка товара
@@ -14,8 +15,19 @@ export const ProductCard = ({ product }: { product: Product }) => {
         state.cart.items.some((item) => item.id === product.id),
     );
 
+    // Проверяем, в избранном ли товар
+    const isFavorite = useAppSelector((state) =>
+        state.favorites.items.some((i) => i.id === product.id),
+    );
+
     return (
         <div className={styles.card}>
+            <button
+                className={`${styles.favBtn} ${isFavorite ? styles.active : ""}`}
+                onClick={() => dispatch(toggleFavorite(product))}
+            >
+                {isFavorite ? "❤️" : "🤍"}
+            </button>
             <img
                 src={product.images[0]}
                 alt={product.title}
