@@ -1,16 +1,22 @@
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { setSortBy, type SortOption } from "../../store/reducers/productSlice";
+import {
+    setSortBy,
+    selectSortBy,
+    type SortOption,
+} from "../../store/reducers/productSlice";
 import styles from "./SortControls.module.css";
 
 export const SortControls = () => {
     const dispatch = useAppDispatch();
-    const currentSort = useAppSelector((state) => state.product.sortBy);
+
+    // ПОЛУЧАЕМ ТЕКУЩУЮ СОРТИРОВКУ ИЗ СТОРА
+    const currentSort = useAppSelector(selectSortBy);
 
     return (
         <div className={styles.sortWrapper}>
             <span>Сортировать: </span>
             <select
-                value={currentSort}
+                value={currentSort} // Синхронизируем состояние стора с UI
                 onChange={(e) =>
                     dispatch(setSortBy(e.target.value as SortOption))
                 }
