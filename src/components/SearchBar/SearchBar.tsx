@@ -1,12 +1,15 @@
 // src/components/SearchBar/SearchBar.tsx
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { setSearchQuery } from "../../store/reducers/productSlice";
+import {
+    selectSearchQuery,
+    setSearchQuery,
+} from "../../store/reducers/productSlice";
 import styles from "./SearchBar.module.css";
 
 export const SearchBar = () => {
     const dispatch = useAppDispatch();
     // Берем текущий запрос из стора
-    const query = useAppSelector((state) => state.product.searchQuery);
+    const query = useAppSelector(selectSearchQuery);
 
     return (
         <div className={styles.searchWrapper}>
